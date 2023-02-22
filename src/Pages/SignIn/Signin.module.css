@@ -1,0 +1,26 @@
+.inputs {
+  width: 14rem;
+  height: 2rem;
+}
+.inputsubmit {
+  
+  height: 2rem;
+  width: 8rem;
+}
+.parent {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  border-radius: 3px;
+  position: relative;
+  top: 8rem;
+  height: 26rem;
+  width: 24rem;
+box-shadow:3px 3px #888888;
+  align-items: center;
+  justify-content: space-around;
+}
+.mainparent {
+  display: flex;
+  justify-content: center;
+}

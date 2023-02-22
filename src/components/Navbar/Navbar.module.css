@@ -1,0 +1,25 @@
+.main{
+   height:4rem; 
+   background-color: aliceblue;
+   display: flex;
+   gap:1rem;
+}
+.logo{
+    display: flex;
+    align-items: center;
+    gap:.7rem;
+    font-weight: 650;
+    font-family:cursive;
+    cursor: pointer;
+}
+.join{
+    
+    position: relative;
+    left:68rem;
+    text-align: left;
+    display: flex;
+    font-family:cursive;
+    cursor:pointer;
+    align-items: center;
+    font-weight: 650;
+}

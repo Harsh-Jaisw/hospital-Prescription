@@ -1,0 +1,8 @@
+.parent{
+    display:flex;
+    flex-direction: column;
+}
+.selects{
+    width:11.77rem;
+    height:1.8rem;
+}
