@@ -5,6 +5,8 @@ import style from "./Signin.module.css"
 import {Link, useNavigate} from "react-router-dom"
 import { useSetRecoilState } from 'recoil';
 import { indexAtom, LoginAtom } from '../../recoilatom/recoilatom';
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 function Signin() {
   const tonav=useNavigate()
   const [name, setName] = useState("");
@@ -23,9 +25,14 @@ function Signin() {
    let arr1=x.findIndex((a)=> a.name===name && a.password===password)
    setindices(arr1)
    if(arr.length===0){
-     alert("user not found ")
+     (toast.error('User not found !', {
+      position: toast.POSITION.TOP_CENTER
+  }))
      return
    }
+   (toast.success('Succesfully Login !', {
+    position: toast.POSITION.TOP_CENTER
+}))
    setLogin(true)
    tonav("/")
   }
@@ -47,11 +54,13 @@ function Signin() {
             value={password}
             onChange={HandlePassword}
           />
+          <div>
         <Buttons
             onClick={handleSubmit}
-            text={"Submit"}
+            text={"Log In"}
             className={style.inputsubmit}
           />
+          <ToastContainer /></div>
           <p>Don't have a account ? <Link to="/signup">SignUp</Link></p>
     </div>
     

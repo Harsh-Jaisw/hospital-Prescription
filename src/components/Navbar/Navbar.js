@@ -3,13 +3,17 @@ import style from "./Navbar.module.css";
 import hospital from "../../Assets/hospital.png";
 import { useNavigate } from "react-router-dom";
 import { LoginAtom,indexAtom } from "../../recoilatom/recoilatom";
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 
 function Navbar() {
-  const login = useRecoilValue(LoginAtom);
+  const [login,SetLogin] = useRecoilState(LoginAtom);
   const indices=useRecoilValue(indexAtom)
   const tonav = useNavigate();
   let x=JSON.parse(localStorage.getItem("user"))
+  function HandleLogout(){
+    SetLogin(false)
+    tonav("/signin")
+  }
   return (
     <nav className={style.main}>
       <div onClick={()=>tonav('/')} className={style.logo}>
@@ -20,7 +24,10 @@ function Navbar() {
       
       <div className={style.join}>
         {login ? (
-          <span>Welcome,{x[indices].name}</span>
+          
+          <span style={{display:"flex",gap:"1rem"}}>Welcome,{x[indices].name.split(" ")[0]} 
+          <span onClick={HandleLogout}>Logout</span>
+          </span>
         ) : (
           <>
           <span onClick={() => tonav("/signup")}>SignUp/</span>

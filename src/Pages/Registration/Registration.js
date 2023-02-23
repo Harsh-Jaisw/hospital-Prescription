@@ -104,10 +104,10 @@ function Registration() {
 
           <Buttons
             onClick={handleSubmit}
-            text={"Submit"}
+            text={"Register"}
             className={style.inputsubmit}
           />
-          <p>Already Have an Account ? <Link to="/signin">Login</Link></p>
+          <p>Already Have an Account ? <Link to="/signin" >Login</Link></p>
         </div>
       </div>
     </>

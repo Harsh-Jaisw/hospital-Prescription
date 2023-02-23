@@ -11,9 +11,11 @@ function Prescription() {
   const tonav = useNavigate();
   useEffect(() => {
     setArr([...arr, prescription]);
+    
   }, [prescription]);
   ;
  useEffect(()=>{
+  
   localStorage.setItem("prescription", JSON.stringify(arr))
  },[arr])
   function HandleRow(id){

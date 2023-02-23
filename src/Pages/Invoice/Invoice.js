@@ -2,13 +2,12 @@ import React from "react";
 import { useRecoilValue } from "recoil";
 import Table from "react-bootstrap/Table";
 import style from "./Invoice.module.css";
-import { InvoiceAtom } from "../../recoilatom/recoilatom";
+import { indexAtom, InvoiceAtom } from "../../recoilatom/recoilatom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
 function Invoice() {
   const invoice = useRecoilValue(InvoiceAtom);
-  console.log(invoice)
   function ConvertPdf() {
     const doc = new jsPDF();
     doc.text(`Patient Name:- ${invoice.obj?.docName}`, 20, 20);
@@ -30,6 +29,7 @@ function Invoice() {
   return (
     <div>
       <div className={style.detail}>
+      
         <div className={style.name}>
           <p>Patient Name:-</p>
           {invoice.obj?.docName}
@@ -38,6 +38,7 @@ function Invoice() {
           <p>Disease Name:-</p>
           {invoice.obj?.diseName}
         </div>
+
       </div>
       <br />
       <Table striped bordered hover size="sm">

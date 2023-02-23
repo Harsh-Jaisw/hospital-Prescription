@@ -1,25 +1,41 @@
-.inputs{
-    width:14rem;
-    height:2rem;
+.inputs {
+  width: 14rem;
+  height: 2rem;
+  border-radius: 15px;
+  /* border: none;
+  outline:none; */
+  height:2rem;
+  padding-left: 10px;
 }
-.inputsubmit{
-   height:2rem;
-   width:8rem;
+.inputsubmit {
+  height: 2rem;
+  width: 8rem;
+  background-color: rgb(46, 123, 46);
+  color:white;
+  border: none;
+  height:2rem;
+  border-radius: 15px;
 }
-.parent{
-    display: flex;
-    flex-direction: column;
-    border:1px solid black;
-    border-radius: 3px;
-    position: relative;
-    top:8rem;
-    height:26rem;
-    width:24rem;
-    box-shadow: 3px 3px #888888;
-    align-items: center;
-    justify-content: space-evenly;
+.parent {
+  display: flex;
+  flex-direction: column;
+  /* border: 1px solid black; */
+  border-radius: 3px;
+  position: relative;
+  top: 8rem;
+  height: 26rem;
+  width: 24rem;
+  box-shadow: 3px 3px black;
+  align-items: center;
+ 
+  background-image: url(https://5.imimg.com/data5/SELLER/Default/2021/8/DD/MD/AQ/96088862/vkare-adult-stainless-steel-stethoscope-ultima-111-grey-colour-500x500.jpg);
+  justify-content: space-evenly;
 }
-.mainparent{
-    display: flex;
-    justify-content: center;  
+.mainparent {
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  width: 100vw;
+  height: 91.3vh;
+  background-image: url(https://wallpaper.dog/large/854206.jpg);
 }

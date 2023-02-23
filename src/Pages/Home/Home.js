@@ -56,33 +56,45 @@ export default function Home() {
     tonav("/invoice");
   }
   return (
-    <div className="Main">
-      {console.log(detail)}
+
+    <div style={{display:"flex",boxSizing:"border-box"}}>
+     
+    <div className={style.Main}>
+      
+    <h1 style={{position:"fixed",fontFamily:"sans-serif"}}>Prescription Form</h1>
+     <div className={style.inputs}>
+      
       <Inputs
         value={docName}
         onChange={(e) => setDocName(e.target.value)}
-        placeholder="Patient name"
+        placeholder="  Patient name"
+        className={style.InputField}
       />
       <Inputs
         value={diseName}
-        placeholder="Disease name"
+        placeholder="  Disease name"
         onChange={(e) => setDiseName(e.target.value)}
+        className={style.InputField}
       />
-      <Buttons onClick={handleClick} text={"+"} />
+      <Buttons onClick={handleClick} className={style.add} text={"Add Medicine"} />
+      
+      </div>
       {inp.map((x, i) => {
         return (
           <div key={x.id} className={style.parent}>
             <Inputs
               value={x.name}
               name={"medName"}
-              placeholder="Medicine name"
+              placeholder="  Medicine name"
+              className={style.InputField}
               onChange={(e) => HandleInput(e, i)}
             />
             <Inputs
               value={x.email}
+              className={style.InputField}
               name={"days"}
               type={"number"}
-              placeholder="No. of days"
+              placeholder="  No. of days"
               onChange={(e) => HandleInput(e, i)}
             />
 
@@ -91,6 +103,7 @@ export default function Home() {
               className={style.selects}
               onChange={(e) => HandleInput(e, i)}
             >
+              <option selected ="  Schedule">Schedule</option>
               {options.map((x, i) => {
                 return (
                   <option key={i} value={x}>
@@ -99,11 +112,14 @@ export default function Home() {
                 );
               })}
             </select>
-            <Buttons onClick={() => HandleRemove(i)} text={"Remove"} />
+            <Buttons onClick={() => HandleRemove(i)} className={style.RemBtn} text={"Remove"} />
           </div>
+          
         );
       })}
-      <Buttons onClick={Handledetail} text={"Submit"} />
+      <Buttons onClick={Handledetail} className={style.submitBtn} text={"Submit"} />
     </div>
+    <div className={style.image}></div>
+   </div>
   );
 }
