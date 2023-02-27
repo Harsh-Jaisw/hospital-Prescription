@@ -29,11 +29,11 @@ export default function Home() {
   const tonav = useNavigate();
   const indices = useRecoilValue(indexAtom);
   let x = JSON.parse(localStorage.getItem("user"));
-  // useEffect(() => {
-  //   if (!isLoggedIn) {
-  //     tonav("/signin");
-  //   }
-  // }, [isLoggedIn, tonav]);
+  useEffect(() => {
+    if (!isLoggedIn) {
+      tonav("/signin");
+    }
+  }, [isLoggedIn, tonav]);
   function handleClick() {
     setInp([...inp, { id: nanoid(3), medName: "", days: "", schedule: "" }]);
   }
