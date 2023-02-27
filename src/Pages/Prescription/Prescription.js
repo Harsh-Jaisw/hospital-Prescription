@@ -24,7 +24,7 @@ function Prescription() {
     localStorage.setItem("prescription",JSON.stringify(arr));
   }, [arr]);
   function HandleRow(id) {
-    let x = arr.find((item) => item.obj.prescriptionId === id);
+    let x = arr.find((item,i) => i === id);
     let y = {...x};
     setInvoice(y);
     tonav("/invoice");
@@ -44,7 +44,7 @@ function Prescription() {
         <tbody>
           {arr?.map((x, i) => {
             return (
-              <tr key={i} onClick={() => HandleRow(x.obj?.prescriptionId)}>
+              <tr key={i} onClick={() => HandleRow(i)}>
                 <td>{x.obj?.prescriptionId}</td>
                 <td>{x.obj?.doctorName}</td>
                 <td>{x.obj?.docName}</td>

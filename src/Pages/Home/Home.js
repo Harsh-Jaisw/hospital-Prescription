@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { InvoiceAtom, LoginAtom } from "../../recoilatom/recoilatom";
-import { useRecoilState, useRecoilValue} from "recoil";
+import {useRecoilValue, useSetRecoilState} from "recoil";
 import { nanoid } from "nanoid";
 import Inputs from "../../Atoms/Input";
 import Buttons from "../../Atoms/Buttons";
@@ -12,8 +12,7 @@ export default function Home() {
   const [docName, setDocName] = useState("");
   const [diseName, setDiseName] = useState("");
   const [pateintMail,setPatientMail]=useState("")
-  // const [detail, setDetail] = useState({});
-  const [invoice,setInvoice] = useRecoilState(InvoiceAtom);
+  const setInvoice = useSetRecoilState(InvoiceAtom);
   const isLoggedIn = useRecoilValue(LoginAtom);
   const [inp, setInp] = useState([
     { id: nanoid(3), medName: "", days: "", schedule: "" },

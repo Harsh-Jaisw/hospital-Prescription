@@ -16,8 +16,6 @@ function Invoice() {
     const doc = new jsPDF();
     let img = new Image();
     img.src = hospital;
-    
-    // var doc = new jsPDF('p', 'mm', 'a3');  // optional parameters
     doc.addImage(img, 'JPEG', 35, 50)
     doc.text("Global Hospital",80,10)
     doc.text(`Patient Name:- ${invoice.obj?.docName}`, 110, 20);
@@ -25,7 +23,6 @@ function Invoice() {
     doc.text(`Disease Name:- ${invoice.obj?.diseName}`, 20, 30);
     
     autoTable(doc, {
-      // theme: "grid",
       margin: { top: 40 },
       columns: [
         { header: "id", dataKey: "id" },
