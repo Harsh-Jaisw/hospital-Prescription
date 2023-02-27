@@ -59,7 +59,7 @@ export default function Home() {
 
     tonav("/invoice");
   }
-  localStorage.setItem("pre",JSON.stringify(invoice))
+
   return (
 
     <div style={{display:"flex",boxSizing:"border-box"}}>
