@@ -74,49 +74,50 @@
 //   );
 // }
 
-import React, { useState } from "react";
+import React from "react";
 import { useRecoilValue } from "recoil";
 import { InvoiceAtom } from "../../recoilatom/recoilatom";
-export default function App() {
+import style from "./email.module.css"
+export default function App({button}) {
   const invoice = useRecoilValue(InvoiceAtom);
   let to=invoice.obj?.pateintMail
   let subject="Prescription Report"
-  let body="Thank's for visiting us ,this is your Prescription files."
-  const [attachment, setAttachment] = useState(null);
-  function handleAttachmentChange(event) {
-    const file = event.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => {
-        setAttachment({
-          name: file.name,
-          dataURL: reader.result
-        });
-      };
-    } else {
-      setAttachment(null);
-    }
-  }
-  function handleSendEmail(event) {
+  let body="<h1>Thank's for visiting us ,this is your Prescription files.</h1>"
+  // const [attachment, setAttachment] = useState(null);
+  // function handleAttachmentChange(event) {
+  //   const file = event.target.files[0];
+  //   if (file) {
+  //     const reader = new FileReader();
+  //     reader.readAsDataURL(file);
+  //     reader.onload = () => {
+  //       setAttachment({
+  //         name: file.name,
+  //         dataURL: reader.result
+  //       });
+  //     };
+  //   } else {
+  //     setAttachment(null);
+  //   }
+  // }
+  function handleSendEmail() {
     let mailtoLink = `mailto:${to}?subject=${subject}&body=${body}`;
-    if (attachment === true) {
-      mailtoLink = mailtoLink + `&attachment=${attachment.dataURL}`;
-    }
+    // if (attachment === true) {
+    //   mailtoLink = mailtoLink + `&attachment=${attachment.dataURL}`;
+    // }
     window.location.href = mailtoLink;
   }
 
   return (
     <>
-    <button type="submit" onClick={handleSendEmail}>Send email</button>
+    <button type="submit" onClick={handleSendEmail}   className={style.btn}>{button}</button>
     <div >
-        <input type="file" onChange={handleAttachmentChange} />
-        {attachment && (
+        {/* <input type="file" onChange={handleAttachmentChange} /> */}
+        {/* {attachment && (
           <span>
             {attachment.name} ({Math.round(attachment.dataURL.length/1024)}{" "}
             KB)
           </span>
-        )}
+        )} */}
         </div>    
    </>
   );

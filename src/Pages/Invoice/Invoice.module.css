@@ -1,8 +1,14 @@
 .detail{
     display: flex;
     justify-content: space-around
-
- 
+}
+.btn{
+    background-color:white ;
+    border:none;
+    border-radius: 100%;
+}
+.btn:hover{
+    background-color: #898282;
 }
 .name{
     display: flex;

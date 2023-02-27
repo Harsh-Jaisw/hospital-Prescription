@@ -7,7 +7,9 @@ import { InvoiceAtom } from "../../recoilatom/recoilatom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
-import Email from "./email";
+import Email from "../email/email";
+import {BsPrinterFill} from "react-icons/bs"
+import {SiGmail} from "react-icons/si"
 function Invoice() {
   const invoice = useRecoilValue(InvoiceAtom);
   function ConvertPdf() {
@@ -49,11 +51,14 @@ function Invoice() {
         <div className={style.name}>
           <p>Disease Name:-</p>
           {invoice.obj?.diseName}
-        </div>
 
+        </div>
+        <div>
+        <button onClick={ConvertPdf} className={style.btn}><BsPrinterFill/></button>
+      <Email button={<SiGmail/>}/></div>
       </div>
       <br />
-      <Table striped bordered hover size="sm">
+      <Table striped bordered hover size="sm" variant="dark">
         <thead>
           <tr>
             <th>id</th>
@@ -75,8 +80,7 @@ function Invoice() {
           })}
         </tbody>
       </Table>
-      <button onClick={ConvertPdf}>Print Pdf</button>
-      <Email button={"Send Email"}/>
+      
     </div>
   );
 }

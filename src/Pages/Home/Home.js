@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { InvoiceAtom, LoginAtom } from "../../recoilatom/recoilatom";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue} from "recoil";
 import { nanoid } from "nanoid";
 import Inputs from "../../Atoms/Input";
 import Buttons from "../../Atoms/Buttons";
@@ -12,8 +12,8 @@ export default function Home() {
   const [docName, setDocName] = useState("");
   const [diseName, setDiseName] = useState("");
   const [pateintMail,setPatientMail]=useState("")
-  const [detail, setDetail] = useState({});
-  const setInvoice = useSetRecoilState(InvoiceAtom);
+  // const [detail, setDetail] = useState({});
+  const [invoice,setInvoice] = useRecoilState(InvoiceAtom);
   const isLoggedIn = useRecoilValue(LoginAtom);
   const [inp, setInp] = useState([
     { id: nanoid(3), medName: "", days: "", schedule: "" },
@@ -32,7 +32,7 @@ export default function Home() {
     if (!isLoggedIn) {
       tonav("/signin");
     }
-  }, [isLoggedIn]);
+  }, [isLoggedIn,tonav]);
   function handleClick() {
     setInp([...inp, { id: nanoid(3), medName: "", days: "", schedule: "" }]);
   }
@@ -54,10 +54,12 @@ export default function Home() {
       diseName,
       pateintMail
     };
-    setDetail({ obj, inp });
+    // setDetail({ obj, inp });
     setInvoice({ obj, inp });
+
     tonav("/invoice");
   }
+  localStorage.setItem("pre",JSON.stringify(invoice))
   return (
 
     <div style={{display:"flex",boxSizing:"border-box"}}>

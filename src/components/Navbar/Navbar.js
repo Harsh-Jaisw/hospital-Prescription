@@ -17,7 +17,7 @@ function Navbar() {
   return (
     <nav className={style.main}>
       <div onClick={()=>tonav('/')} className={style.logo}>
-       <img src={hospital} style={{height:"3rem"}}/>
+       <img src={hospital} style={{height:"3rem"}} alt="logo"/>
         Global Hospital
       </div>
       <div onClick={()=>tonav('/prescription')} className={style.logo}>Prescription</div>
