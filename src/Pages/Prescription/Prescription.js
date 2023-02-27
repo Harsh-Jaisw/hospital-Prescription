@@ -10,16 +10,16 @@ function Prescription() {
   const [arr, setArr] = useState(JSON.parse(localStorage.getItem("prescription") || "[]") || []);
   const tonav = useNavigate();
   useEffect(() => {
+    if(prescription!=={}){
     setArr([...arr, prescription]);
-    
+    }
   }, [prescription]);
   ;
  useEffect(()=>{
-  
   localStorage.setItem("prescription", JSON.stringify(arr))
  },[arr])
   function HandleRow(id){
- let x=arr.find((item,i)=>i===id)
+ let x=arr.find((item)=>item.obj.prescriptionId===id)
  let y={...x}
  setInvoice(y)
  tonav("/invoice") 
@@ -40,7 +40,7 @@ function Prescription() {
         <tbody>
           {arr?.map((x, i) => {
             return (
-              <tr key={i} onClick={()=>HandleRow(i)}>
+              <tr key={i} onClick={()=>HandleRow(x.obj?.prescriptionId)}>
                 <td>{x.obj?.prescriptionId}</td>
                 <td>{x.obj?.doctorName}</td>
                 <td>{x.obj?.docName}</td>

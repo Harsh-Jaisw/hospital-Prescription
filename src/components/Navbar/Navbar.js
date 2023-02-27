@@ -23,15 +23,17 @@ function Navbar() {
       <div onClick={()=>tonav('/prescription')} className={style.logo}>Prescription</div>
       
       <div className={style.join}>
+        {/* <span>""</span> */}
         {login ? (
           
-          <span style={{display:"flex",gap:"1rem"}}>Welcome,{x[indices].name.split(" ")[0]} 
+          <span style={{display:"flex",gap:"1rem"}}>Welcome,Dr.{x[indices].name.split(" ")[0]} 
           <span onClick={HandleLogout}>Logout</span>
           </span>
         ) : (
           <>
           <span onClick={() => tonav("/signup")}>SignUp/</span>
           <span onClick={() => tonav("/signin")}>SignIn</span>
+          
           </>
         )}
       </div>

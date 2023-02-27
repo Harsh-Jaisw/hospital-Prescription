@@ -5,11 +5,13 @@ import { nanoid } from "nanoid";
 import Inputs from "../../Atoms/Input";
 import Buttons from "../../Atoms/Buttons";
 import { useNavigate } from "react-router-dom";
+import {GoPlus} from "react-icons/go"
 import { indexAtom } from "../../recoilatom/recoilatom";
 import style from "./Home.module.css";
 export default function Home() {
   const [docName, setDocName] = useState("");
   const [diseName, setDiseName] = useState("");
+  const [pateintMail,setPatientMail]=useState("")
   const [detail, setDetail] = useState({});
   const setInvoice = useSetRecoilState(InvoiceAtom);
   const isLoggedIn = useRecoilValue(LoginAtom);
@@ -30,7 +32,7 @@ export default function Home() {
     if (!isLoggedIn) {
       tonav("/signin");
     }
-  }, []);
+  }, [isLoggedIn]);
   function handleClick() {
     setInp([...inp, { id: nanoid(3), medName: "", days: "", schedule: "" }]);
   }
@@ -50,6 +52,7 @@ export default function Home() {
       doctorName: x[indices]?.name,
       docName,
       diseName,
+      pateintMail
     };
     setDetail({ obj, inp });
     setInvoice({ obj, inp });
@@ -67,16 +70,18 @@ export default function Home() {
       <Inputs
         value={docName}
         onChange={(e) => setDocName(e.target.value)}
-        placeholder="  Patient name"
+        placeholder="Patient name"
         className={style.InputField}
       />
       <Inputs
         value={diseName}
-        placeholder="  Disease name"
+        placeholder="Disease name"
         onChange={(e) => setDiseName(e.target.value)}
         className={style.InputField}
       />
-      <Buttons onClick={handleClick} className={style.add} text={"Add Medicine"} />
+      <Inputs value={pateintMail} placeholder="Patient Mail"
+        onChange={(e) => setPatientMail(e.target.value)} className={style.InputField}/>
+      <Buttons onClick={handleClick} className={style.add} text={<GoPlus/>} />
       
       </div>
       {inp.map((x, i) => {
@@ -85,7 +90,7 @@ export default function Home() {
             <Inputs
               value={x.name}
               name={"medName"}
-              placeholder="  Medicine name"
+              placeholder="Medicine name"
               className={style.InputField}
               onChange={(e) => HandleInput(e, i)}
             />
@@ -94,7 +99,7 @@ export default function Home() {
               className={style.InputField}
               name={"days"}
               type={"number"}
-              placeholder="  No. of days"
+              placeholder="No. of days"
               onChange={(e) => HandleInput(e, i)}
             />
 
@@ -103,7 +108,7 @@ export default function Home() {
               className={style.selects}
               onChange={(e) => HandleInput(e, i)}
             >
-              <option selected ="  Schedule">Schedule</option>
+              <option  value="Schedule">Schedule</option>
               {options.map((x, i) => {
                 return (
                   <option key={i} value={x}>

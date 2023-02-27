@@ -10,7 +10,7 @@ function Inputs({ className, placeholder, type, value, onChange ,name}) {
         placeholder={placeholder}
         className={className}
         name={name}
-        required
+    
       />
     </div>
   );

@@ -1,6 +1,6 @@
 .main{
    height:4rem; 
-   background-color: gainsboro;
+   background-color:aliceblue;
    display: flex;
    gap:1rem;
    position: sticky;
@@ -17,7 +17,7 @@
 .join{
     
     position: relative;
-    left:64rem;
+    left:62rem;
     text-align: left;
     display: flex;
     font-family:cursive;
