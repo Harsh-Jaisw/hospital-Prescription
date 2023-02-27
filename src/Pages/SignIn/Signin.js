@@ -3,9 +3,10 @@ import Buttons from "../../Atoms/Buttons";
 import Inputs from "../../Atoms/Input";
 import style from "./Signin.module.css";
 import { Link, useNavigate } from "react-router-dom";
-import { useSetRecoilState } from "recoil";
-import { indexAtom, LoginAtom } from "../../recoilatom/recoilatom";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { indexAtom, LoginAtom, ThemeAtom } from "../../recoilatom/recoilatom";
 import { ToastContainer, toast } from "react-toastify";
+import stethoscope from "../../Assets/stethoscope.png"
 import "react-toastify/dist/ReactToastify.css";
 function Signin() {
   const tonav = useNavigate();
@@ -14,6 +15,7 @@ function Signin() {
   let x = JSON.parse(localStorage.getItem("user"));
   const setindices = useSetRecoilState(indexAtom);
   const setLogin = useSetRecoilState(LoginAtom);
+  const theme = useRecoilValue(ThemeAtom);
   function HandleName(e) {
     setName(e.target.value);
   }
@@ -39,7 +41,11 @@ function Signin() {
   }
   return (
     <div className={style.mainparent}>
-      <div className={style.parent}>
+      <div className={style.parent} style={{
+            backgroundImage: `url(${stethoscope})`,
+            backgroundColor: theme ? "white" : "black",
+            color: theme ? "black" : "white",
+          }}>
         <p style={{ fontWeight: "650" }}>Login Page</p>
         <Inputs
           type={"text"}

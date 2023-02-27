@@ -1,6 +1,6 @@
 .main{
    height:4rem; 
-   background-color:aliceblue;
+   background-color:lightblue;
    display: flex;
    gap:1rem;
    position: sticky;
@@ -17,7 +17,7 @@
 .join{
     
     position: relative;
-    left:62rem;
+    left:60rem;
     text-align: left;
     display: flex;
     font-family:cursive;

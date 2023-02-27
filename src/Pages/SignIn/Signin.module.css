@@ -19,16 +19,18 @@
 .parent {
   display: flex;
   flex-direction: column;
-  /* border: 1px solid black; */
+  /* border: 6px solid black; */
   border-radius: 3px;
   position: relative;
   top: 8rem;
   height: 26rem;
+  /* color:white; */
   width: 24rem;
+  background-color: white;
   box-shadow: 3px 3px black;
   align-items: center;
   justify-content: space-around;
-  background-image: url(https://5.imimg.com/data5/SELLER/Default/2021/8/DD/MD/AQ/96088862/vkare-adult-stainless-steel-stethoscope-ultima-111-grey-colour-500x500.jpg);
+  /* background-image: url(https://5.imimg.com/data5/SELLER/Default/2021/8/DD/MD/AQ/96088862/vkare-adult-stainless-steel-stethoscope-ultima-111-grey-colour-500x500.jpg); */
 }
 .mainparent {
   display: flex;

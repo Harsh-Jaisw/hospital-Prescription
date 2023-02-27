@@ -3,7 +3,8 @@
     justify-content: space-around
 }
 .btn{
-    background-color:white ;
+    background:none ;
+    
     border:none;
     border-radius: 100%;
 }

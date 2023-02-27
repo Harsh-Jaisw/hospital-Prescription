@@ -11,4 +11,7 @@ export const InvoiceAtom=atom({
 key:"invoice",
 default:{}
 })
- 
+export const ThemeAtom=atom({
+  key:"dark",
+  default:false
+}) 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { InvoiceAtom } from "../../recoilatom/recoilatom";
+import { InvoiceAtom, ThemeAtom } from "../../recoilatom/recoilatom";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import Table from "react-bootstrap/esm/Table";
 import { useNavigate } from "react-router-dom";
@@ -7,33 +7,31 @@ import { useNavigate } from "react-router-dom";
 function Prescription() {
   const prescription = useRecoilValue(InvoiceAtom);
   const setInvoice = useSetRecoilState(InvoiceAtom);
-  const x=JSON.parse(localStorage.getItem("prescription") || "[]")
-  const [arr, setArr] = useState(
-   x
-  );
-  console.log(x)
+  const x = JSON.parse(localStorage.getItem("prescription") || "[]");
+  const [arr, setArr] = useState(x);
+  const theme = useRecoilValue(ThemeAtom);
   const tonav = useNavigate();
   useEffect(() => {
-    function fun(){
-    setArr([...arr,prescription]);
+    function fun() {
+      setArr([...arr, prescription]);
     }
-    fun()
+    fun();
   }, [prescription]);
-//  console.log("its is a prescription",prescription)
+  //  console.log("its is a prescription",prescription)
   useEffect(() => {
-    localStorage.setItem("prescription",JSON.stringify(arr));
+    localStorage.setItem("prescription", JSON.stringify(arr));
   }, [arr]);
   function HandleRow(id) {
-    let x = arr.find((item,i) => i === id);
-    let y = {...x};
+    let x = arr.find((item, i) => i === id);
+    let y = { ...x };
     setInvoice(y);
     tonav("/invoice");
   }
   return (
     <div>
-      {console.log(arr)}
+      {/* {console.log(arr)} */}
 
-      <Table striped bordered hover size="md" variant="dark">
+      <Table striped bordered hover size="md" variant={theme ? "light" :"dark"}>
         <thead>
           <tr>
             <th>prescriptionId</th>

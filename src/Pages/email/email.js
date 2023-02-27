@@ -45,7 +45,7 @@
 //   }
 
 //   return (
-    
+
 //     <form onSubmit={handleSendEmail}>
 //       {console.log(attachment)}
 //       <label>
@@ -76,13 +76,16 @@
 
 import React from "react";
 import { useRecoilValue } from "recoil";
-import { InvoiceAtom } from "../../recoilatom/recoilatom";
-import style from "./email.module.css"
-export default function App({button}) {
+import Buttons from "../../Atoms/Buttons";
+import { InvoiceAtom, ThemeAtom } from "../../recoilatom/recoilatom";
+import style from "./email.module.css";
+export default function App({ button }) {
   const invoice = useRecoilValue(InvoiceAtom);
-  let to=invoice.obj?.pateintMail
-  let subject="Prescription Report"
-  let body="<h1>Thank's for visiting us ,this is your Prescription files.</h1>"
+  let to = invoice.obj?.pateintMail;
+  let subject = "Prescription Report";
+  let body =
+    "Thank's for visiting us ,this is your Prescription files.";
+    const theme = useRecoilValue(ThemeAtom)
   // const [attachment, setAttachment] = useState(null);
   // function handleAttachmentChange(event) {
   //   const file = event.target.files[0];
@@ -109,8 +112,14 @@ export default function App({button}) {
 
   return (
     <>
-    <button type="submit" onClick={handleSendEmail}   className={style.btn}>{button}</button>
-    <div >
+      <Buttons
+        type="submit"
+        onClick={handleSendEmail}
+        style={{ color: theme ? "black" : "white" }}
+        className={style.btn}
+        text={button}
+      />
+      <div>
         {/* <input type="file" onChange={handleAttachmentChange} /> */}
         {/* {attachment && (
           <span>
@@ -118,7 +127,7 @@ export default function App({button}) {
             KB)
           </span>
         )} */}
-        </div>    
-   </>
+      </div>
+    </>
   );
 }
