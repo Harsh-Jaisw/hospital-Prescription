@@ -17,7 +17,7 @@ export default function Home() {
   const isLoggedIn = useRecoilValue(LoginAtom);
   const theme = useRecoilValue(ThemeAtom);
   const [inp, setInp] = useState([
-    { id: nanoid(), medName: "", days: "", schedule: "" },
+    { id: nanoid(3), medName: "", days: "", schedule: "" },
   ]);
   const options = [
     "Morning",

@@ -13,5 +13,5 @@ default:{}
 })
 export const ThemeAtom=atom({
   key:"dark",
-  default:false
+  default:true
 }) 

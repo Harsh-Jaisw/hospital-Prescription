@@ -15,7 +15,7 @@ function Invoice() {
   const invoice = useRecoilValue(InvoiceAtom);
   const theme = useRecoilValue(ThemeAtom);
   function ConvertPdf() {
-    const doc = new jsPDF();
+    const doc = new jsPDF("p", "mm", "a4");
     let img = new Image();
     img.src = hospital;
     doc.addImage(img, "JPEG", 35, 50);
